@@ -1,10 +1,10 @@
 class Game {
   constructor() {
-    var player1 = new Player('one', '⛷');
-    var player2 = new Player('two', '🚵');
+    // var player1 = new Player('one', '⛷');
+    // var player2 = new Player('two', '🚵');
     this.totalToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.newBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    this.currentTurn = player1;
+    this.currentTurn = "one";
     this.winningCombo = false;
     this.tie = false;
   }
@@ -15,26 +15,30 @@ class Game {
     this.totalToClick.splice(index, 1);
   }
 
-  checkTotal() {
-    if ((this.totalToClick.length >= 5) && (this.totalToClick.length < 9)) {
-      checkForWinningCombo(player)
-    }
-    if ((this.totalToClick.length === 0) && (this.winningCombo === false)) {
-      this.tie = true;
-    }
-  }
+  // checkTotal(player) {
+  //   if ((this.totalToClick.length >= 5) && (this.totalToClick.length < 9)) {
+  //     this.checkForWinningCombo(player)
+  //     return 'WE HAVE A WINNER'
+  //   }
+  //   if ((this.totalToClick.length === 0) && (this.winningCombo === false)) {
+  //     this.tie = true;
+  //     return 'ITS A TIE'
+  //   }
+  // }
 
   changeTurns() { // invoke in clickSquare? or invoke in each checkForWinningCombo condition
-    if (this.currentTurn === player1) {
-      this.currentTurn === player2;
-    } else if (this.currentTurn === player2) {
-      this.currentTurn === player1;
+    if (this.currentTurn === "one") {
+      this.currentTurn === "two";
+    } else if (this.currentTurn === "two") {
+      this.currentTurn === "one";
     }
   }
 
   // REFACTOR THIS LATER?
   checkForWinningCombo(player) {
-    if (player.clicked.includes(1) && player.clicked.includes(2) && player.clicked.includes(3)) {
+    if ((this.totalToClick.length === 0) && (this.winningCombo === false)) {
+      this.tie = true;
+    } else if (player.clicked.includes(1) && player.clicked.includes(2) && player.clicked.includes(3)) {
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
