@@ -1,10 +1,10 @@
 class Game {
   constructor() {
-    var player1 = new Player('one', '⛷')
-    var player1 = new Player('two', '🚵')
+    var player1 = new Player('one', '⛷');
+    var player2 = new Player('two', '🚵');
     this.totalToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.newBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    this.currentTurn = 'one';
+    this.currentTurn = player1;
     this.winningCombo = false;
     this.tie = false;
   }
@@ -13,29 +13,6 @@ class Game {
     player.clicked.push(num);
     var index = this.totalToClick.indexOf(num);
     this.totalToClick.splice(index, 1);
-  }
-
-  // REFACTOR THIS LATER?
-  buildNewBoard(num, token) { // invoke in clickSquare
-    if (num === 1) {
-      this.newBoard.splice(0, 1, token)
-    } else if (num === 2) {
-      this.newBoard.splice(1, 1, token)
-    } else if (num === 3) {
-      this.newBoard.splice(2, 1, token)
-    } else if (num === 4) {
-      this.newBoard.splice(3, 1, token)
-    } else if (num === 5) {
-      this.newBoard.splice(4, 1, token)
-    } else if (num === 6) {
-      this.newBoard.splice(5, 1, token)
-    } else if (num === 7) {
-      this.newBoard.splice(6, 1, token)
-    } else if (num === 8) {
-      this.newBoard.splice(7, 1, token)
-    } else if (num === 9) {
-      this.newBoard.splice(8, 1, token)
-    }
   }
 
   checkTotal() {
@@ -47,11 +24,11 @@ class Game {
     }
   }
 
-  changeTurns() { // invoke in each checkForWinningCombo condition
-    if (this.currentTurn === 'one') {
-      this.currentTurn === 'two';
-    } else if (this.currentTurn === 'two') {
-      this.currentTurn === 'one';
+  changeTurns() { // invoke in clickSquare? or invoke in each checkForWinningCombo condition
+    if (this.currentTurn === player1) {
+      this.currentTurn === player2;
+    } else if (this.currentTurn === player2) {
+      this.currentTurn === player1;
     }
   }
 
@@ -97,6 +74,29 @@ class Game {
       player1.isWinner = true;
       player.wins++;
       return `${player.token} won!`;
+    }
+  }
+
+  // REFACTOR THIS LATER?
+  buildNewBoard(num, token) { // invoke in clickSquare
+    if (num === 1) {
+      this.newBoard.splice(0, 1, token)
+    } else if (num === 2) {
+      this.newBoard.splice(1, 1, token)
+    } else if (num === 3) {
+      this.newBoard.splice(2, 1, token)
+    } else if (num === 4) {
+      this.newBoard.splice(3, 1, token)
+    } else if (num === 5) {
+      this.newBoard.splice(4, 1, token)
+    } else if (num === 6) {
+      this.newBoard.splice(5, 1, token)
+    } else if (num === 7) {
+      this.newBoard.splice(6, 1, token)
+    } else if (num === 8) {
+      this.newBoard.splice(7, 1, token)
+    } else if (num === 9) {
+      this.newBoard.splice(8, 1, token)
     }
   }
 
