@@ -14,10 +14,6 @@ class Player {
     this.isWinner = true; // will need a conditional here
   }
 
-  clearWins() {
-    this.wins = 0;
-  }
-
   saveWinsToStorage() {
 
   }
