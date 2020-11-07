@@ -1,11 +1,4 @@
-/* COLORADO COLORS
-dark blue: #225A92
-lighter blue: #4976AE
-white-ish: #E7EAF1
-dark red: #5C383E
-yellow: #DBAF3F
-red: #82311A */
-
+/* Overarching Styles: */
 html {
   height: 100%;
   font-family: 'Open Sans', sans-serif;
@@ -25,6 +18,15 @@ h1 {
   padding: 5%;
 }
 
+h2 {
+  margin: 0;
+}
+
+div {
+  font-size: 1.5em;
+}
+
+/* Section Styles: */
 section {
   display: flex;
   flex-direction: column;
@@ -33,30 +35,37 @@ section {
 
 .center {
   background-color: #E7EAF1;
-  padding-bottom: 10%;
+  padding-bottom: 15%;
 }
 
 .sidebar {
   padding-top: 20%;
   background: rgb(231, 234, 241);
-  background: linear-gradient(180deg, rgba(231, 234, 241, 1) 30%, rgba(34, 90, 146, 1) 70%);
+  background: linear-gradient(180deg, rgba(231, 234, 241, 1) 30%, rgba(34, 90, 146, 1) 90%);
 }
 
+/* Gameboard Styles: */
 table {
   width: 72%;
+  height: 72%;
   border-collapse: collapse;
 }
 
 td {
   width: 24%;
-  border: 0.5rem solid #DBAF3F;
+  height: 24%;
+  border: 0.4rem solid #DBAF3F;
+  text-align: center;
+  font-size: 3em;
+  /* border-color: rgb(219, 175, 63); */
+  /* background: linear-gradient(180deg, rgba(219, 175, 63, 1) 30%, rgba(130, 49, 26, 1) 70%); */
 }
 
-td::after {
+/* td::after {
   content: "";
   display: block;
   margin-top: 100%;
-}
+} */
 
 td:nth-of-type(1) {
   border-left-color: transparent;
@@ -75,3 +84,11 @@ td:nth-of-type(3) {
 tr:nth-of-type(3) td {
   border-bottom-color: transparent;
 }
+
+/* COLORADO COLORS
+dark blue: #225A92
+lighter blue: #4976AE
+white-ish: #E7EAF1
+dark red: #5C383E
+yellow: #DBAF3F
+red: #82311A */
