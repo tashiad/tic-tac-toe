@@ -13,8 +13,7 @@ table.addEventListener("click", identifySquare);
 
 // Event Handlers & Functions:
 
-// why aren't winning conditions updating in the data model
-// set setTimeout
+// set setTimeout to reset
 // disable if already clicked
 // set up local storage
 
@@ -24,7 +23,7 @@ function identifySquare(event) {
   }
 }
 
-function showToken(square) { // refactor to make innerText its own function w/ params
+function showToken(square) {
   if (game.currentTurn === 1) {
     var idNum = square.id[square.id.length - 1];
     square.innerText = `${game.player1.token}`;

@@ -2,7 +2,8 @@ class Game {
   constructor(id1, token1, id2, token2) {
     this.player1 = new Player(id1, token1);
     this.player2 = new Player(id2, token2);
-    this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // this isn't splicing correctly now
+    // this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // this isn't splicing correctly now
+    this.totalSquaresClicked = []; // this isn't splicing correctly now
     this.currentTurn = 1;
     this.winningCombo = false;
     this.tie = false;
@@ -11,9 +12,11 @@ class Game {
 
   clickSquare(player, squareNum) {
     player.clicked.push(squareNum);
-    var index = this.leftToClick.indexOf(squareNum);
-    this.leftToClick.splice(index, 1);
-    this.checkTotal(player);
+    this.totalSquaresClicked.push(squareNum);
+    // var index = this.leftToClick.indexOf(squareNum);
+    // this.leftToClick.splice(index, 1);
+    // this.checkTotal(player);
+    this.checkForWinningCombo(player)
     // this.buildNewBoard(squareNum, player.token);
   };
 
@@ -21,18 +24,28 @@ class Game {
     this.currentTurn = this.currentTurn === 1 ? 2 : 1;
   };
 
-  checkTotal(player) {
-    if (this.leftToClick.length <= 8 && this.leftToClick.length >= 5) {
-      this.changeTurns();
-    }
-    if (this.leftToClick.length < 5) {
-      this.checkForWinningCombo(player); // never got to this?
-    };
-    if ((this.leftToClick.length === 0) && (this.winningCombo === false)) {
-      this.tie = true;
-      // this.reset(); // set timeout
-    };
-  };
+  // checkTotal(player) {
+  //   if (this.totalSquaresClicked.length >= 5) {
+  //     this.checkForWinningCombo(player);
+  //   } else if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
+  //     this.tie = true;
+  //   } else {
+  //     this.changeTurns();
+  //   }
+  // };
+
+  // checkTotal(player) {
+  //   if (this.leftToClick.length <= 8 && this.leftToClick.length >= 5) {
+  //     this.changeTurns();
+  //   }
+  //   if (this.leftToClick.length <= 4) {
+  //     this.checkForWinningCombo(player); // never got to this?
+  //   };
+  //   if ((this.leftToClick.length === 0) && (this.winningCombo === false)) {
+  //     this.tie = true;
+  //     // this.reset(); // set timeout
+  //   };
+  // };
 
   executeWin(player) {
     this.winningCombo = true;
@@ -43,30 +56,37 @@ class Game {
   };
 
   checkForWinningCombo(player) {
-    if ((player.clicked.includes(1)) && (player.clicked.includes(2)) && (player.clicked.includes(3))) {
-      this.executeWin(player);
-      return;
-    } else if (player.clicked.includes(1) && player.clicked.includes(4) && player.clicked.includes(7)) {
-      this.executeWin(player);
-      return;
-    } else if (player.clicked.includes(1) && player.clicked.includes(5) && player.clicked.includes(9)) {
-      this.executeWin(player);
-      return;
-    } else if (player.clicked.includes(2) && player.clicked.includes(5) && player.clicked.includes(8)) {
-      this.executeWin(player);
-      return;
-    } else if (player.clicked.includes(3) && player.clicked.includes(5) && player.clicked.includes(7)) {
-      this.executeWin(player);
-      return;
-    } else if (player.clicked.includes(3) && player.clicked.includes(6) && player.clicked.includes(9)) {
-      this.executeWin(player);
-      return;
-    } else if (player.clicked.includes(4) && player.clicked.includes(5) && player.clicked.includes(6)) {
-      this.executeWin(player);
-      return;
-    } else if (player.clicked.includes(7) && player.clicked.includes(8) && player.clicked.includes(9)) {
-      this.executeWin(player);
-      return;
+    if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
+      this.tie = true;
+      console.log('tie')
+    } else if (this.totalSquaresClicked.length >= 5) {
+      if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
+        this.executeWin(player);
+        return;
+      } else if ((player.clicked.includes("1")) && (player.clicked.includes("4")) && (player.clicked.includes("7"))) {
+        this.executeWin(player);
+        return;
+      } else if ((player.clicked.includes("1")) && (player.clicked.includes("5")) && (player.clicked.includes("9"))) {
+        this.executeWin(player);
+        return;
+      } else if ((player.clicked.includes("2")) && (player.clicked.includes("5")) && (player.clicked.includes("8"))) {
+        this.executeWin(player);
+        return;
+      } else if ((player.clicked.includes("3")) && (player.clicked.includes("5")) && (player.clicked.includes("7"))) {
+        this.executeWin(player);
+        return;
+      } else if ((player.clicked.includes("3")) && (player.clicked.includes("6")) && (player.clicked.includes("9"))) {
+        this.executeWin(player);
+        return;
+      } else if ((player.clicked.includes("4")) && (player.clicked.includes("5")) && (player.clicked.includes("6"))) {
+        this.executeWin(player);
+        return;
+      } else if ((player.clicked.includes("7")) && (player.clicked.includes("8")) && (player.clicked.includes("9"))) {
+        this.executeWin(player);
+        return;
+      } else {
+        this.changeTurns();
+      };
     } else {
       this.changeTurns();
     };
