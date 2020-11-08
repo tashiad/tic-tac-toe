@@ -9,15 +9,13 @@ class Game {
     this.tie = false;
   };
 
-  // changeTurns() { // NOT WORKING YET
-  //   if (this.currentTurn === 1) {
-  //     this.clickSquare(player1); // don't know what squareNum is here
-  //     this.currentTurn = 2;
-  //   } else if (this.currentTurn === 2) {
-  //     this.clickSquare(player2); // don't know what squareNum is here
-  //     this.currentTurn = 1;
-  //   };
-  // };
+  changeTurns() {
+    if (this.currentTurn === 1) {
+      this.currentTurn = 2;
+    } else if (this.currentTurn === 2) {
+      this.currentTurn = 1;
+    };
+  };
 
   clickSquare(player, squareNum) {
     this.checkTotal(player);
@@ -28,64 +26,46 @@ class Game {
   };
 
   checkTotal(player) {
+    if (this.totalToClick.length <= 8 && this.totalToClick.length > 5) {
+      this.changeTurns();
+    }
     if (this.totalToClick.length <= 5) {
       this.checkForWinningCombo(player);
     };
     if ((this.totalToClick.length === 0) && (this.winningCombo === false)) {
       this.tie = true;
+      this.reset();
     };
   };
 
-  // NOT WORKING YET // REFACTOR THIS LATER
+  executeWin(player) {
+    this.winningCombo = true;
+    player.isWinner = true;
+    player.wins++;
+    player.winningBoards.push(this.newBoard);
+    this.reset();
+  }
+
+  // NOT WORKING YET?
   checkForWinningCombo(player) {
     if (player.clicked.includes(1) && player.clicked.includes(2) && player.clicked.includes(3)) {
-      this.winningCombo = true;
-      player1.isWinner = true;
-      player.wins++;
-      player.winningBoards.push(this.newBoard);
-      // this.reset();
+      this.executeWin(player);
     } else if (player.clicked.includes(1) && player.clicked.includes(4) && player.clicked.includes(7)) {
-      this.winningCombo = true;
-      player1.isWinner = true;
-      player.wins++;
-      player.winningBoards.push(this.newBoard);
-      // this.reset();
+      this.executeWin(player);
     } else if (player.clicked.includes(1) && player.clicked.includes(5) && player.clicked.includes(9)) {
-      this.winningCombo = true;
-      player1.isWinner = true;
-      player.wins++;
-      player.winningBoards.push(this.newBoard);
-      // this.reset();
+      this.executeWin(player);
     } else if (player.clicked.includes(2) && player.clicked.includes(5) && player.clicked.includes(8)) {
-      this.winningCombo = true;
-      player1.isWinner = true;
-      player.wins++;
-      player.winningBoards.push(this.newBoard);
-      // this.reset();
+      this.executeWin(player);
     } else if (player.clicked.includes(3) && player.clicked.includes(5) && player.clicked.includes(7)) {
-      this.winningCombo = true;
-      player1.isWinner = true;
-      player.wins++;
-      player.winningBoards.push(this.newBoard);
-      // this.reset();
+      this.executeWin(player);
     } else if (player.clicked.includes(3) && player.clicked.includes(6) && player.clicked.includes(9)) {
-      this.winningCombo = true;
-      player1.isWinner = true;
-      player.wins++;
-      player.winningBoards.push(this.newBoard);
-      // this.reset();
+      this.executeWin(player);
     } else if (player.clicked.includes(4) && player.clicked.includes(5) && player.clicked.includes(6)) {
-      this.winningCombo = true;
-      player1.isWinner = true;
-      player.wins++;
-      player.winningBoards.push(this.newBoard);
-      // this.reset();
+      this.executeWin(player);
     } else if (player.clicked.includes(7) && player.clicked.includes(8) && player.clicked.includes(9)) {
-      this.winningCombo = true;
-      player1.isWinner = true;
-      player.wins++;
-      player.winningBoards.push(this.newBoard);
-      // this.reset();
+      this.executeWin(player);
+    } else {
+      this.changeTurns();
     };
   };
 
