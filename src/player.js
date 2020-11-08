@@ -5,15 +5,15 @@ class Player {
     this.clicked = [];
     this.wins = 0;
     this.isWinner = false;
-    this.winningBoards = []; // an array of arrays...
+    // this.winningBoards = []; // an array of arrays...
   };
 
   saveWinsToStorage() {
-
+    // literally just this.wins
   };
 
   retreiveWinsFromStorage() {
-
+    // this.wins
   };
 
 };

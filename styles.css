@@ -67,7 +67,7 @@ td {
   margin-top: 100%;
 } */
 
-td:nth-of-type(1) {
+td:first-child {
   border-left-color: transparent;
   border-top-color: transparent;
 }
