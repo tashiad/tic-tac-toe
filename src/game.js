@@ -37,59 +37,62 @@ class Game {
   };
 
   // REFACTOR THIS LATER
-  checkForWinningCombo(player) { // SOMETHING WRONG WITH CONDITIONAL (can't get into it)
+  checkForWinningCombo(player) {
     if (player.clicked.includes(1) && player.clicked.includes(2) && player.clicked.includes(3)) {
-      console.log("winning combo 123:", game)
-      console.log("winning player:", player1)
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
-      this.reset();
-      console.log("game after reset:", game)
-      console.log("player after reset:", player1)
-    } else if (player.clicked.includes(1) && player.clicked.includes(4) && player.clicked.includes(7)) {
+      // this.reset();
+    }
+    if (player.clicked.includes(1) && player.clicked.includes(4) && player.clicked.includes(7)) {
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
-      this.reset();
-    } else if (player.clicked.includes(1) && player.clicked.includes(5) && player.clicked.includes(9)) {
+      // this.reset();
+    }
+    if (player.clicked.includes(1) && player.clicked.includes(5) && player.clicked.includes(9)) {
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
-      this.reset();
-    } else if (player.clicked.includes(2) && player.clicked.includes(5) && player.clicked.includes(8)) {
+      // this.reset();
+    }
+    if (player.clicked.includes(2) && player.clicked.includes(5) && player.clicked.includes(8)) {
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
-      this.reset();
-    } else if (player.clicked.includes(3) && player.clicked.includes(5) && player.clicked.includes(7)) {
+      // this.reset();
+    }
+    if (player.clicked.includes(3) && player.clicked.includes(5) && player.clicked.includes(7)) {
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
-      this.reset();
-    } else if (player.clicked.includes(3) && player.clicked.includes(6) && player.clicked.includes(9)) {
+      // this.reset();
+    }
+    if (player.clicked.includes(3) && player.clicked.includes(6) && player.clicked.includes(9)) {
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
-      this.reset();
-    } else if (player.clicked.includes(4) && player.clicked.includes(5) && player.clicked.includes(6)) {
+      // this.reset();
+    }
+    if (player.clicked.includes(4) && player.clicked.includes(5) && player.clicked.includes(6)) {
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
-      this.reset();
-    } else if (player.clicked.includes(7) && player.clicked.includes(8) && player.clicked.includes(9)) {
+      // this.reset();
+    }
+    if (player.clicked.includes(7) && player.clicked.includes(8) && player.clicked.includes(9)) {
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
-      this.reset();
+      // this.reset();
     };
   };
 
