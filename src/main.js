@@ -1,5 +1,16 @@
 // Query Selectors:
-
+var header = document.querySelector("h1");
+var skiier = document.querySelector("#skiier");
+var biker = document.querySelector("#biker");
+var box1 = document.querySelector("#box-1");
+var box2 = document.querySelector("#box-2");
+var box3 = document.querySelector("#box-3");
+var box4 = document.querySelector("#box-4");
+var box5 = document.querySelector("#box-5");
+var box6 = document.querySelector("#box-6");
+var box7 = document.querySelector("#box-7");
+var box8 = document.querySelector("#box-8");
+var box9 = document.querySelector("#box-9");
 
 // Global Variables:
 var game = new Game();
@@ -7,7 +18,15 @@ var player1 = new Player('one', '⛷');
 var player2 = new Player('two', '🚵');
 
 // Event Listeners:
-
+box1.addEventListener("click", showToken);
+box2.addEventListener("click", showToken);
+box3.addEventListener("click", showToken);
+box4.addEventListener("click", showToken);
+box5.addEventListener("click", showToken);
+box6.addEventListener("click", showToken);
+box7.addEventListener("click", showToken);
+box8.addEventListener("click", showToken);
+box9.addEventListener("click", showToken);
 
 // Event Handlers & Functions:
 
