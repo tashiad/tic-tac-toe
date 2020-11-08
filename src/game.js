@@ -37,13 +37,17 @@ class Game {
   };
 
   // REFACTOR THIS LATER
-  checkForWinningCombo(player) { // NOT WORKING YET
+  checkForWinningCombo(player) { // SOMETHING WRONG WITH CONDITIONAL (can't get into it)
     if (player.clicked.includes(1) && player.clicked.includes(2) && player.clicked.includes(3)) {
+      console.log("winning combo 123:", game)
+      console.log("winning player:", player1)
       this.winningCombo = true;
       player1.isWinner = true;
       player.wins++;
       player.winningBoards.push(this.newBoard);
       this.reset();
+      console.log("game after reset:", game)
+      console.log("player after reset:", player1)
     } else if (player.clicked.includes(1) && player.clicked.includes(4) && player.clicked.includes(7)) {
       this.winningCombo = true;
       player1.isWinner = true;
