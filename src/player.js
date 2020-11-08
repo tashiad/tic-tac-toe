@@ -6,14 +6,14 @@ class Player {
     this.wins = 0;
     this.isWinner = false;
     this.winningBoards = []; // an array of arrays...
-  }
+  };
 
   saveWinsToStorage() {
 
-  }
+  };
 
   retreiveWinsFromStorage() {
 
-  }
+  };
 
-}
+};
