@@ -39,9 +39,11 @@ function showToken(square) {
 function changeHeader(player) {
   if (game.tie) {
     header.innerText = `It's a draw!`;
+    setTimeout(resetBoard, 3000);
   }
   if (player.isWinner) {
     header.innerText = `${player.token} wins!`;
+    setTimeout(resetBoard, 3000);
   };
 };
 
@@ -51,8 +53,9 @@ function showWins() {
 };
 
 function resetBoard() {
+  console.log('is this working')
   for (var i = 0; i < squares.length; i++) {
-    square.innerText = '';
+    squares.innerText = '';
   }
   game.reset();
 };
