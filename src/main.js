@@ -42,10 +42,16 @@ function showToken(square) {
 function changeHeader(player) {
   if (game.tie) {
     header.innerText = `It's a draw!`;
+    for (var i = 0; i < squares.length; i++) {
+      squares[i].classList.add("disabled");
+    };
     setTimeout(resetBoard, 3000);
   };
   if (player.isWinner) {
     header.innerText = `${player.token} wins!`;
+    for (var i = 0; i < squares.length; i++) {
+      squares[i].classList.add("disabled");
+    };
     setTimeout(resetBoard, 3000);
   };
 };
