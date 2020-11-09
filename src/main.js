@@ -3,6 +3,7 @@ var header = document.querySelector("h1");
 var skiier = document.querySelector("#skiier");
 var biker = document.querySelector("#biker");
 var table = document.querySelector("table");
+var squares = document.querySelectorAll(".td");
 
 // Global Variables:
 var game = new Game('one', '⛷', 'two', '🚵');
@@ -15,44 +16,35 @@ table.addEventListener("click", identifySquare);
 function identifySquare(event) {
   if (event.target.classList.contains("td")) {
     showToken(event.target);
-  }
-}
+  };
+};
 
 function showToken(square) {
   if (game.currentTurn === 1) {
     var idNum = square.id[square.id.length - 1];
     square.innerText = `${game.player1.token}`;
-    disableSquare(square);
     header.innerText = `It's ${game.player2.token}'s turn`;
     game.clickSquare(game.player1, idNum);
+    changeHeader(game.player1);
+    showWins();
   } else if (game.currentTurn === 2) {
     var idNum = square.id[square.id.length - 1];
     square.innerText = `${game.player2.token}`;
-    disableSquare(square);
     header.innerText = `It's ${game.player1.token}'s turn`;
     game.clickSquare(game.player2, idNum);
-  };
-};
-
-function disableSquare(square) { // NOT WORKING
-  // if ((square.innerText.includes("⛷")) || (square.innerText.includes("🚵‍"))) {
-  //   square.disabled = true;
-  // } else {
-  //   square.disabled = false;
-  // };
-  if (square.innerText != "") {
-    square.disabled = true;
-  } else {
-    square.disabled = false;
+    changeHeader(game.player2);
+    showWins();
   };
 };
 
 function changeHeader(player) {
-  if (game.tie = true) {
+  if (game.tie) {
     header.innerText = `It's a draw!`;
-  }
+    setTimeout(resetBoard, 3000);
+  };
   if (player.isWinner) {
     header.innerText = `${player.token} wins!`;
+    setTimeout(resetBoard, 3000);
   };
 };
 
@@ -62,8 +54,9 @@ function showWins() {
 };
 
 function resetBoard() {
-  for (var i = 0; i < square.length; i++) {
-    square[i].innerText = '';
-  }
   game.reset();
+  header.innerText = `It's ${game.player1.token}'s turn`;
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].innerText = "";
+  };
 };
