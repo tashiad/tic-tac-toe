@@ -55,7 +55,7 @@ table {
   pointer-events: none;
 }
 
-td {
+.td {
   width: 24%;
   height: 24%;
   border: 0.4rem solid #DBAF3F;

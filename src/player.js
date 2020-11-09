@@ -8,12 +8,21 @@ class Player {
     // this.winningBoards = []; // an array of arrays...
   };
 
-  saveWinsToStorage() {
-    // literally just this.wins
+  saveWinsToStorage(player) {
+    if (player.id === 'one') {
+      localStorage.setItem("player1Wins", JSON.stringify(this.wins));
+    }
+    if (player.id === 'two') {
+      localStorage.setItem("player2Wins", JSON.stringify(this.wins));
+    }
   };
 
-  retreiveWinsFromStorage() {
-    // this.wins
-  };
+  // retreiveWinsFromStorage() {
+  //   if (localStorage.length < 1) {
+  //     return;
+  //   };
+  //   JSON.parse(localStorage.getItem('player1Wins'));
+  //   JSON.parse(localStorage.getItem('player2Wins'));
+  // };
 
 };

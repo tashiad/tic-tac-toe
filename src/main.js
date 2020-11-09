@@ -9,7 +9,7 @@ var squares = document.querySelectorAll(".td");
 var game = new Game('one', '⛷', 'two', '🚵');
 
 // Event Listeners:
-// window.addEventListener("load", showWins);
+window.addEventListener("load", showWins);
 table.addEventListener("click", identifySquare);
 
 // Event Handlers & Functions:

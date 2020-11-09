@@ -51,6 +51,7 @@ class Game {
     this.winningCombo = true;
     player.isWinner = true;
     player.wins++;
+    player.saveWinsToStorage(player);
     // player.winningBoards.push(this.newBoard);
   };
 
