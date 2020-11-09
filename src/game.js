@@ -47,11 +47,14 @@ class Game {
   //   };
   // };
 
+  setTimeout(reset(), 3000);
+
   executeWin(player) {
     this.winningCombo = true;
     player.isWinner = true;
     player.wins++;
     header.innerText = `${player.token} wins!`;
+    // this.setTimeout(function(){ reset(); }, 3000);
     // this.reset(); // set timeout
     // player.winningBoards.push(this.newBoard);
   };
@@ -60,6 +63,7 @@ class Game {
     if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
       this.tie = true;
       header.innerText = `It's a draw!`;
+      // setTimeout(function(){ reset(); }, 3000);
     } else if (this.totalSquaresClicked.length >= 5) {
       if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
         this.executeWin(player);
@@ -94,7 +98,8 @@ class Game {
   };
 
   reset() {
-    this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    this.totalSquaresClicked = [];
+    // this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     // this.newBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.currentTurn = 1;
     this.winningCombo = false;
