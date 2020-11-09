@@ -39,17 +39,6 @@ function showToken(clickedSquare) {
   };
 };
 
-function disableSquare() {
-  for (var i = 0; i < squares.length; i++) {
-    squares[i].classList.add("disabled");
-  };
-}
-
-function endGame() {
-  disableSquare();
-  setTimeout(resetBoard, 3000);
-}
-
 function changeGameState(player) {
   if (game.tie) {
     header.innerText = `It's a draw!`;
@@ -61,6 +50,17 @@ function changeGameState(player) {
   };
 };
 
+function disableSquare() {
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].classList.add("disabled");
+  };
+};
+
+function endGame() {
+  disableSquare();
+  setTimeout(resetBoard, 3000);
+};
+
 function loadWins() {
   game.player1.retrieveWinsFromStorage(game.player1);
   game.player2.retrieveWinsFromStorage(game.player2);
@@ -68,17 +68,25 @@ function loadWins() {
 };
 
 function updateWins() {
+  checkForSkiierWins();
+  checkForBikerWins();
+};
+
+function checkForSkiierWins() {
   if (game.player1.wins === null) {
     skiier.innerText = `0 wins`;
   } else {
     skiier.innerText = `${game.player1.wins} wins`;
   };
+}
+
+function checkForBikerWins() {
   if (game.player2.wins === null) {
     biker.innerText = `0 wins`;
   } else {
     biker.innerText = `${game.player2.wins} wins`;
   };
-};
+}
 
 function resetBoard() {
   game.reset();
