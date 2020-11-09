@@ -9,13 +9,14 @@ var squares = document.querySelectorAll(".td");
 var game = new Game('one', '⛷', 'two', '🚵');
 
 // Event Listeners:
-window.addEventListener("load", showWins);
+// window.addEventListener("load", showWins);
 table.addEventListener("click", identifySquare);
 
 // Event Handlers & Functions:
 
 function identifySquare(event) {
   if (event.target.classList.contains("td")) {
+    event.target.classList.add("disabled");
     showToken(event.target);
   };
 };
@@ -41,10 +42,16 @@ function showToken(square) {
 function changeHeader(player) {
   if (game.tie) {
     header.innerText = `It's a draw!`;
+    for (var i = 0; i < squares.length; i++) {
+      squares[i].classList.add("disabled");
+    };
     setTimeout(resetBoard, 3000);
   };
   if (player.isWinner) {
     header.innerText = `${player.token} wins!`;
+    for (var i = 0; i < squares.length; i++) {
+      squares[i].classList.add("disabled");
+    };
     setTimeout(resetBoard, 3000);
   };
 };
@@ -59,5 +66,6 @@ function resetBoard() {
   header.innerText = `It's ${game.player1.token}'s turn`;
   for (var i = 0; i < squares.length; i++) {
     squares[i].innerText = "";
+    squares[i].classList.remove("disabled");
   };
 };
