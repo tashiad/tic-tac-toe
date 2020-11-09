@@ -70,15 +70,23 @@ function changeHeader(player) {
   };
 };
 
-function updateWins() {
-  skiier.innerText = `${game.player1.wins} wins`;
-  biker.innerText = `${game.player2.wins} wins`;
-};
-
 function loadWins() {
   game.player1.retrieveWinsFromStorage(game.player1);
   game.player2.retrieveWinsFromStorage(game.player2);
   updateWins();
+};
+
+function updateWins() {
+  if (game.player1.wins === null) {
+    skiier.innerText = `0 wins`;
+  } else {
+    skiier.innerText = `${game.player1.wins} wins`;
+  };
+  if (game.player2.wins === null) {
+    biker.innerText = `0 wins`;
+  } else {
+    biker.innerText = `${game.player2.wins} wins`;
+  };
 };
 
 function resetBoard() {
