@@ -12,10 +12,9 @@ window.addEventListener("load", showWins);
 table.addEventListener("click", identifySquare);
 
 // Event Handlers & Functions:
-
-// set setTimeout to reset
-// disable if already clicked
-// set up local storage
+// function setTimeout(functionName, 3000) {
+//
+// };
 
 function identifySquare(event) {
   if (event.target.classList.contains("td")) {
@@ -29,22 +28,24 @@ function showToken(square) {
     square.innerText = `${game.player1.token}`;
     header.innerText = `It's ${game.player2.token}'s turn`;
     game.clickSquare(game.player1, idNum);
+    changeHeader(game.player1);
   } else if (game.currentTurn === 2) {
     var idNum = square.id[square.id.length - 1];
     square.innerText = `${game.player2.token}`;
     header.innerText = `It's ${game.player1.token}'s turn`;
     game.clickSquare(game.player2, idNum);
+    changeHeader(game.player2);
   };
 };
 
-// function changeHeader(player) { // NOT WORKING
-//   if (game.tie = true) {
-//     header.innerText = `It's a draw!`;
-//   }
-//   if (player.isWinner) {
-//     header.innerText = `${player.token} wins!`;
-//   };
-// };
+function changeHeader(player) {
+  if (game.tie) {
+    header.innerText = `It's a draw!`;
+  }
+  if (player.isWinner) {
+    header.innerText = `${player.token} wins!`;
+  };
+};
 
 function showWins() {
   skiier.innerText = `${game.player1.wins} wins`;
