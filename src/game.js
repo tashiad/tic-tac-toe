@@ -16,7 +16,7 @@ class Game {
     // var index = this.leftToClick.indexOf(squareNum);
     // this.leftToClick.splice(index, 1);
     // this.checkTotal(player);
-    this.checkForWinningCombo(player)
+    this.checkForWinningCombo(player);
     // this.buildNewBoard(squareNum, player.token);
   };
 
@@ -58,7 +58,6 @@ class Game {
   checkForWinningCombo(player) {
     if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
       this.tie = true;
-      console.log('tie')
     } else if (this.totalSquaresClicked.length >= 5) {
       if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
         this.executeWin(player);
