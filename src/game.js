@@ -3,7 +3,7 @@ class Game {
     this.player1 = new Player(id1, token1);
     this.player2 = new Player(id2, token2);
     // this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // this isn't splicing correctly now
-    this.totalSquaresClicked = []; // this isn't splicing correctly now
+    this.totalSquaresClicked = [];
     this.currentTurn = 1;
     this.winningCombo = false;
     this.tie = false;
