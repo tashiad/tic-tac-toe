@@ -2,62 +2,37 @@ class Game {
   constructor(id1, token1, id2, token2) {
     this.player1 = new Player(id1, token1);
     this.player2 = new Player(id2, token2);
-    // this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // this isn't splicing correctly now
-    this.totalSquaresClicked = [];
+    this.combinedSquaresClicked = [];
     this.currentTurn = 1;
     this.winningCombo = false;
     this.tie = false;
-    // this.newBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  };
-
-  clickSquare(player, squareNum) {
-    player.clicked.push(squareNum);
-    this.totalSquaresClicked.push(squareNum);
-    // var index = this.leftToClick.indexOf(squareNum);
-    // this.leftToClick.splice(index, 1);
-    // this.checkTotal(player);
-    this.checkForWinningCombo(player);
-    // this.buildNewBoard(squareNum, player.token);
   };
 
   changeTurns() {
     this.currentTurn = this.currentTurn === 1 ? 2 : 1;
   };
 
+  clickSquare(player, squareNum) {
+    player.clicked.push(squareNum);
+    this.combinedSquaresClicked.push(squareNum);
+    // this.checkTotal(player);
+    this.checkForWinningCombo(player);
+  };
+
   // checkTotal(player) { // where can i changeTurn?
-  //   if (this.totalSquaresClicked.length >= 5) {
+  //   if (this.combinedSquaresClicked.length >= 5) {
   //     this.checkForWinningCombo(player);
-  //   } else if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
+  //   } else if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
   //     this.tie = true;
   //   } else {
   //     this.changeTurns();
   //   }
   // };
 
-  // checkTotal(player) {
-  //   if (this.leftToClick.length <= 8 && this.leftToClick.length >= 5) {
-  //     this.changeTurns();
-  //   }
-  //   if (this.leftToClick.length <= 4) {
-  //     this.checkForWinningCombo(player); // never got to this?
-  //   };
-  //   if ((this.leftToClick.length === 0) && (this.winningCombo === false)) {
-  //     this.tie = true;
-  //     // this.reset(); // set timeout
-  //   };
-  // };
-
-  executeWin(player) {
-    this.winningCombo = true;
-    player.isWinner = true;
-    player.wins++;
-    // player.winningBoards.push(this.newBoard);
-  };
-
   checkForWinningCombo(player) {
-    if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
-      this.tie = true;
-    } else if (this.totalSquaresClicked.length >= 5) {
+    if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
+      this.tie = true; // double check that this is working properly
+    } else if (this.combinedSquaresClicked.length >= 5) {
       if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
         this.executeWin(player);
         return;
@@ -90,10 +65,15 @@ class Game {
     };
   };
 
+  executeWin(player) {
+    this.winningCombo = true;
+    player.isWinner = true;
+    player.wins++;
+    player.saveWinsToStorage(player);
+  };
+
   reset() {
-    this.totalSquaresClicked = [];
-    // this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    // this.newBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    this.combinedSquaresClicked = [];
     this.currentTurn = 1;
     this.winningCombo = false;
     this.tie = false;
@@ -102,28 +82,5 @@ class Game {
     this.player1.isWinner = false;
     this.player2.isWinner = false;
   };
-
-  // REFACTOR THIS LATER (IF THIS IS EVEN NEEDED?)
-  // buildNewBoard(squareNum, token) {
-  //   if (squareNum === 1) {
-  //     this.newBoard.splice(0, 1, token);
-  //   } else if (squareNum === 2) {
-  //     this.newBoard.splice(1, 1, token);
-  //   } else if (squareNum === 3) {
-  //     this.newBoard.splice(2, 1, token);
-  //   } else if (squareNum === 4) {
-  //     this.newBoard.splice(3, 1, token);
-  //   } else if (squareNum === 5) {
-  //     this.newBoard.splice(4, 1, token);
-  //   } else if (squareNum === 6) {
-  //     this.newBoard.splice(5, 1, token);
-  //   } else if (squareNum === 7) {
-  //     this.newBoard.splice(6, 1, token);
-  //   } else if (squareNum === 8) {
-  //     this.newBoard.splice(7, 1, token);
-  //   } else if (squareNum === 9) {
-  //     this.newBoard.splice(8, 1, token);
-  //   };
-  // };
 
 };
