@@ -47,8 +47,6 @@ class Game {
   //   };
   // };
 
-  // setTimeout(reset(), 3000);
-
   executeWin(player) {
     this.winningCombo = true;
     player.isWinner = true;
@@ -93,7 +91,8 @@ class Game {
   };
 
   reset() {
-    this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    this.totalSquaresClicked = [];
+    // this.leftToClick = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     // this.newBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.currentTurn = 1;
     this.winningCombo = false;
