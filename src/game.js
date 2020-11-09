@@ -51,6 +51,7 @@ class Game {
     this.winningCombo = true;
     player.isWinner = true;
     player.wins++;
+    header.innerText = `${player.token} wins!`;
     // this.reset(); // set timeout
     // player.winningBoards.push(this.newBoard);
   };
@@ -58,7 +59,7 @@ class Game {
   checkForWinningCombo(player) {
     if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
       this.tie = true;
-      console.log('tie')
+      header.innerText = `It's a draw!`;
     } else if (this.totalSquaresClicked.length >= 5) {
       if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
         this.executeWin(player);
