@@ -24,7 +24,7 @@ class Game {
     this.currentTurn = this.currentTurn === 1 ? 2 : 1;
   };
 
-  // checkTotal(player) {
+  // checkTotal(player) { // where can i changeTurn?
   //   if (this.totalSquaresClicked.length >= 5) {
   //     this.checkForWinningCombo(player);
   //   } else if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
@@ -47,19 +47,18 @@ class Game {
   //   };
   // };
 
+  // setTimeout(reset(), 3000);
+
   executeWin(player) {
     this.winningCombo = true;
     player.isWinner = true;
     player.wins++;
-    header.innerText = `${player.token} wins!`;
-    // this.reset(); // set timeout
     // player.winningBoards.push(this.newBoard);
   };
 
   checkForWinningCombo(player) {
     if ((this.totalSquaresClicked.length === 9) && (this.winningCombo === false)) {
       this.tie = true;
-      header.innerText = `It's a draw!`;
     } else if (this.totalSquaresClicked.length >= 5) {
       if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
         this.executeWin(player);
