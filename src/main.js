@@ -37,14 +37,14 @@ function showToken(square) {
   };
 };
 
-function changeHeader(player) { // NOT WORKING
-  if (game.tie = true) {
-    header.innerText = `It's a draw!`;
-  }
-  if (player.isWinner) {
-    header.innerText = `${player.token} wins!`;
-  };
-};
+// function changeHeader(player) { // NOT WORKING
+//   if (game.tie = true) {
+//     header.innerText = `It's a draw!`;
+//   }
+//   if (player.isWinner) {
+//     header.innerText = `${player.token} wins!`;
+//   };
+// };
 
 function showWins() {
   skiier.innerText = `${game.player1.wins} wins`;
