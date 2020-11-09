@@ -1,28 +1,30 @@
 class Player {
   constructor(id, token) {
-    this.id = id; // can't id and token be the same thing?
+    this.id = id;
     this.token = token;
     this.clicked = [];
     this.wins = 0;
     this.isWinner = false;
-    // this.winningBoards = []; // an array of arrays...
   };
 
   saveWinsToStorage(player) {
     if (player.id === 'one') {
-      localStorage.setItem("player1Wins", JSON.stringify(this.wins));
-    }
+      localStorage.setItem('player1Wins', JSON.stringify(this.wins));
+    };
     if (player.id === 'two') {
-      localStorage.setItem("player2Wins", JSON.stringify(this.wins));
-    }
+      localStorage.setItem('player2Wins', JSON.stringify(this.wins));
+    };
   };
 
-  // retreiveWinsFromStorage() {
-  //   if (localStorage.length < 1) {
-  //     return;
-  //   };
-  //   JSON.parse(localStorage.getItem('player1Wins'));
-  //   JSON.parse(localStorage.getItem('player2Wins'));
-  // };
+  retrieveWinsFromStorage(player) {
+    var player1SavedWins = JSON.parse(localStorage.getItem("player1Wins"));
+    var player2SavedWins = JSON.parse(localStorage.getItem("player2Wins"));
+    if (player.id === 'one') {
+      this.wins = player1SavedWins;
+    };
+    if (player.id === 'two') {
+      this.wins = player2SavedWins;
+    };
+  };
 
 };

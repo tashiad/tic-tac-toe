@@ -9,7 +9,7 @@ var squares = document.querySelectorAll(".td");
 var game = new Game('one', '⛷', 'two', '🚵');
 
 // Event Listeners:
-window.addEventListener("load", showWins);
+window.addEventListener("load", loadWins);
 table.addEventListener("click", identifySquare);
 
 // Event Handlers & Functions:
@@ -24,20 +24,34 @@ function identifySquare(event) {
 function showToken(square) {
   if (game.currentTurn === 1) {
     var idNum = square.id[square.id.length - 1];
+    // updateTurn(game.player1);
     square.innerText = `${game.player1.token}`;
     header.innerText = `It's ${game.player2.token}'s turn`;
     game.clickSquare(game.player1, idNum);
     changeHeader(game.player1);
-    showWins();
+    // updateWins();
+    loadWins();
   } else if (game.currentTurn === 2) {
     var idNum = square.id[square.id.length - 1];
     square.innerText = `${game.player2.token}`;
     header.innerText = `It's ${game.player1.token}'s turn`;
     game.clickSquare(game.player2, idNum);
     changeHeader(game.player2);
-    showWins();
+    // updateWins();
+    loadWins();
   };
 };
+
+// function updateTurn(player) {
+//   if (player.id === 'one') {
+//     square.innerText = `${game.player1.token}`;
+//     header.innerText = `It's ${game.player2.token}'s turn`;
+//   };
+//   if (player.id === 'two') {
+//     square.innerText = `${game.player2.token}`;
+//     header.innerText = `It's ${game.player1.token}'s turn`;
+//   };
+// };
 
 function changeHeader(player) {
   if (game.tie) {
@@ -56,9 +70,15 @@ function changeHeader(player) {
   };
 };
 
-function showWins() {
+function updateWins() {
   skiier.innerText = `${game.player1.wins} wins`;
   biker.innerText = `${game.player2.wins} wins`;
+};
+
+function loadWins() {
+  game.player1.retrieveWinsFromStorage(game.player1);
+  game.player2.retrieveWinsFromStorage(game.player2);
+  updateWins();
 };
 
 function resetBoard() {
