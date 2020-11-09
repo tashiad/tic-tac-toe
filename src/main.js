@@ -27,12 +27,14 @@ function showToken(square) {
     header.innerText = `It's ${game.player2.token}'s turn`;
     game.clickSquare(game.player1, idNum);
     changeHeader(game.player1);
+    showWins();
   } else if (game.currentTurn === 2) {
     var idNum = square.id[square.id.length - 1];
     square.innerText = `${game.player2.token}`;
     header.innerText = `It's ${game.player1.token}'s turn`;
     game.clickSquare(game.player2, idNum);
     changeHeader(game.player2);
+    showWins();
   };
 };
 
