@@ -21,22 +21,30 @@ function identifySquare(event) {
   };
 };
 
-//CHANGE NAMES
 function clickSquare(square) {
-  var idNum = square.id[square.id.length - 1];
   if (game.currentTurn === 1) {
-    square.innerText = `${game.player1.token}`;
-    header.innerText = `It's ${game.player2.token}'s turn`;
-    game.updateClickedSquares(game.player1, idNum);
-    changeGameState(game.player1);
+    executePlayer1Turn(square);
   } else if (game.currentTurn === 2) {
-    square.innerText = `${game.player2.token}`;
-    header.innerText = `It's ${game.player1.token}'s turn`;
-    game.updateClickedSquares(game.player2, idNum);
-    changeGameState(game.player2);
+    executePlayer2Turn(square);
   };
   loadWins();
 };
+
+function executePlayer1Turn(square) {
+  var idNum = square.id[square.id.length - 1];
+  square.innerText = `${game.player1.token}`;
+  header.innerText = `It's ${game.player2.token}'s turn`;
+  game.updateClickedSquares(game.player1, idNum);
+  changeGameState(game.player1);
+}
+
+function executePlayer2Turn(square) {
+  var idNum = square.id[square.id.length - 1];
+  square.innerText = `${game.player2.token}`;
+  header.innerText = `It's ${game.player1.token}'s turn`;
+  game.updateClickedSquares(game.player2, idNum);
+  changeGameState(game.player2);
+}
 
 function changeGameState(player) {
   if (game.tie) {
