@@ -30,9 +30,8 @@ class Game {
   // };
 
   checkForWinningCombo(player) {
-    if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
-      this.tie = true; // double check that this is working properly
-    } else if (this.combinedSquaresClicked.length >= 5) {
+    debugger
+    if (this.combinedSquaresClicked.length >= 5) {
       if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
         this.executeWin(player);
         return;
@@ -56,6 +55,9 @@ class Game {
         return;
       } else if ((player.clicked.includes("7")) && (player.clicked.includes("8")) && (player.clicked.includes("9"))) {
         this.executeWin(player);
+        return;
+      } else if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
+        this.tie = true;
         return;
       } else {
         this.changeTurns();

@@ -13,7 +13,6 @@ window.addEventListener("load", loadWins);
 gameboard.addEventListener("click", identifySquare);
 
 // Event Handlers & Functions:
-
 function identifySquare(event) {
   if (event.target.classList.contains("td")) {
     event.target.classList.add("disabled");
@@ -36,7 +35,7 @@ function executePlayer1Turn(square) {
   header.innerText = `It's ${game.player2.token}'s turn`;
   game.updateClickedSquares(game.player1, idNum);
   changeGameState(game.player1);
-}
+};
 
 function executePlayer2Turn(square) {
   var idNum = square.id[square.id.length - 1];
@@ -44,7 +43,7 @@ function executePlayer2Turn(square) {
   header.innerText = `It's ${game.player1.token}'s turn`;
   game.updateClickedSquares(game.player2, idNum);
   changeGameState(game.player2);
-}
+};
 
 function changeGameState(player) {
   if (game.tie) {
@@ -85,7 +84,7 @@ function checkForSkiierWins() {
   } else {
     skiier.innerText = `${game.player1.wins} wins`;
   };
-}
+};
 
 function checkForBikerWins() {
   if (game.player2.wins === null) {
@@ -93,7 +92,7 @@ function checkForBikerWins() {
   } else {
     biker.innerText = `${game.player2.wins} wins`;
   };
-}
+};
 
 function resetBoard() {
   game.reset();
