@@ -14,7 +14,6 @@ body {
 
 h1 {
   font-size: 1.75em;
-  /* padding: 5%; */
   margin: 7%;
 }
 
@@ -53,18 +52,12 @@ table {
   border-collapse: collapse;
 }
 
-.disabled {
-  pointer-events: none;
-}
-
 td {
   width: 90px;
   height: 90px;
   border: 0.37rem solid #DBAF3F;
   text-align: center;
   font-size: 3.3em;
-  /* border-color: rgb(219, 175, 63); */
-  /* background: linear-gradient(180deg, rgba(219, 175, 63, 1) 30%, rgba(130, 49, 26, 1) 70%); */
 }
 
 td:first-child {
@@ -83,4 +76,8 @@ td:nth-of-type(3) {
 
 tr:nth-of-type(3) td {
   border-bottom-color: transparent;
+}
+
+.disabled {
+  pointer-events: none;
 }
