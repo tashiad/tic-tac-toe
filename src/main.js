@@ -1,21 +1,21 @@
 // Query Selectors:
-var header = document.querySelector("h1");
-var skiier = document.querySelector("#skiier");
-var biker = document.querySelector("#biker");
-var gameboard = document.querySelector("table");
-var squares = document.querySelectorAll(".td");
+var gameState = document.querySelector('#game-state');
+var skiier = document.querySelector('#skiier');
+var biker = document.querySelector('#biker');
+var gameboard = document.querySelector('.gameboard');
+var squares = document.querySelectorAll('.gameboard-square');
 
 // Global Variables:
 var game = new Game('one', '⛷', 'two', '🚵');
 
 // Event Listeners:
-window.addEventListener("load", loadWins);
-gameboard.addEventListener("click", identifySquare);
+window.addEventListener('load', loadWins);
+gameboard.addEventListener('click', identifySquare);
 
 // Event Handlers & Functions:
 function identifySquare(event) {
-  if (event.target.classList.contains("td")) {
-    event.target.classList.add("disabled");
+  if (event.target.classList.contains('gameboard-square')) {
+    event.target.classList.add('disabled');
     clickSquare(event.target);
   };
 };
@@ -32,7 +32,7 @@ function clickSquare(square) {
 function executePlayer1Turn(square) {
   var idNum = square.id[square.id.length - 1];
   square.innerText = `${game.player1.token}`;
-  header.innerText = `It's ${game.player2.token}'s turn`;
+  gameState.innerText = `It's ${game.player2.token}'s turn`;
   game.updateClickedSquares(game.player1, idNum);
   changeGameState(game.player1);
 };
@@ -40,31 +40,48 @@ function executePlayer1Turn(square) {
 function executePlayer2Turn(square) {
   var idNum = square.id[square.id.length - 1];
   square.innerText = `${game.player2.token}`;
-  header.innerText = `It's ${game.player1.token}'s turn`;
+  gameState.innerText = `It's ${game.player1.token}'s turn`;
   game.updateClickedSquares(game.player2, idNum);
   changeGameState(game.player2);
 };
 
 function changeGameState(player) {
   if (game.tie) {
-    header.innerText = `It's a draw!`;
+    gameState.innerText = `It's a draw!`;
     endGame();
   };
   if (player.isWinner) {
-    header.innerText = `${player.token} wins!`;
+    gameState.innerText = `${player.token} wins!`;
     endGame();
-  };
-};
-
-function disableSquare() {
-  for (var i = 0; i < squares.length; i++) {
-    squares[i].classList.add("disabled");
   };
 };
 
 function endGame() {
   disableSquare();
   setTimeout(resetBoard, 3000);
+};
+
+function disableSquare() {
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].classList.add('disabled');
+  };
+};
+
+function resetBoard() {
+  game.reset();
+  determineTurnAfterGameEnd();
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].innerText = '';
+    squares[i].classList.remove('disabled');
+  };
+};
+
+function determineTurnAfterGameEnd() {
+  if (game.currentTurn === 1) {
+    gameState.innerText = `It's ${game.player1.token}'s turn`;
+  } else if (game.currentTurn === 2) {
+    gameState.innerText = `It's ${game.player2.token}'s turn`;
+  };
 };
 
 function loadWins() {
@@ -91,22 +108,5 @@ function checkForBikerWins() {
     biker.innerText = `0 wins`;
   } else {
     biker.innerText = `${game.player2.wins} wins`;
-  };
-};
-
-function determineTurnAfterGameEnd() {
-  if (game.currentTurn === 1) {
-    header.innerText = `It's ${game.player1.token}'s turn`;
-  } else if (game.currentTurn === 2) {
-    header.innerText = `It's ${game.player2.token}'s turn`;
-  };
-};
-
-function resetBoard() {
-  game.reset();
-  determineTurnAfterGameEnd();
-  for (var i = 0; i < squares.length; i++) {
-    squares[i].innerText = "";
-    squares[i].classList.remove("disabled");
   };
 };

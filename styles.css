@@ -1,16 +1,15 @@
 /* Overarching Styles: */
-html {
+html,
+body {
   height: 100%;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
   color: #82311A;
+  margin: 0;
 }
 
 body {
-  height: 100%;
-  margin: 0;
   display: grid;
-  grid-template: auto / 1fr 2fr 1fr
+  grid-template: auto / 1fr 2fr 1fr;
 }
 
 h1 {
@@ -22,7 +21,7 @@ h2 {
   margin: 0;
 }
 
-div {
+.token {
   font-size: 1.5em;
 }
 
@@ -55,7 +54,7 @@ table {
   pointer-events: none;
 }
 
-.td {
+td {
   width: 24%;
   height: 24%;
   border: 0.4rem solid #DBAF3F;
@@ -65,11 +64,6 @@ table {
   /* background: linear-gradient(180deg, rgba(219, 175, 63, 1) 30%, rgba(130, 49, 26, 1) 70%); */
 }
 
-/* td::after {
-  content: "";
-  display: block;
-  margin-top: 100%;
-} */
 td:first-child {
   border-left-color: transparent;
   border-top-color: transparent;
@@ -87,11 +81,3 @@ td:nth-of-type(3) {
 tr:nth-of-type(3) td {
   border-bottom-color: transparent;
 }
-
-/* COLORADO COLORS
-dark blue: #225A92
-lighter blue: #4976AE
-white-ish: #E7EAF1
-dark red: #5C383E
-yellow: #DBAF3F
-red: #82311A */
