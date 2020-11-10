@@ -14,15 +14,17 @@ body {
 
 h1 {
   font-size: 1.75em;
-  padding: 5%;
+  /* padding: 5%; */
+  margin: 7%;
 }
 
 h2 {
   margin: 0;
+  font-size: 1.4em;
 }
 
 .token {
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 /* Section Styles: */
@@ -38,13 +40,14 @@ section {
 }
 
 .sidebar {
-  padding-top: 20%;
+  padding-top: 15%;
   background: rgb(231, 234, 241);
   background: linear-gradient(180deg, rgba(231, 234, 241, 1) 30%, rgba(34, 90, 146, 1) 90%);
 }
 
 /* Gameboard Styles: */
 table {
+  table-layout: fixed;
   width: 72%;
   height: 72%;
   border-collapse: collapse;
@@ -55,11 +58,11 @@ table {
 }
 
 td {
-  width: 24%;
-  height: 24%;
-  border: 0.4rem solid #DBAF3F;
+  width: 90px;
+  height: 90px;
+  border: 0.37rem solid #DBAF3F;
   text-align: center;
-  font-size: 3em;
+  font-size: 3.3em;
   /* border-color: rgb(219, 175, 63); */
   /* background: linear-gradient(180deg, rgba(219, 175, 63, 1) 30%, rgba(130, 49, 26, 1) 70%); */
 }
