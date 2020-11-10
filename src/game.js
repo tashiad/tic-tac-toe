@@ -68,6 +68,12 @@ class Game {
     this.winningCombo = true;
     player.isWinner = true;
     player.wins++;
+    if (player.id === 'one') {
+      this.currentTurn = 2;
+    } else if (player.id === 'two') {
+      this.currentTurn = 1;
+    };
+    console.log(game)
     player.saveWinsToStorage(player);
   };
 

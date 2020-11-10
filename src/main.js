@@ -96,7 +96,11 @@ function checkForBikerWins() {
 
 function resetBoard() {
   game.reset();
-  header.innerText = `It's ${game.player1.token}'s turn`;
+  if (game.currentTurn === 1) {
+    header.innerText = `It's ${game.player1.token}'s turn`;
+  } else if (game.currentTurn === 2) {
+    header.innerText = `It's ${game.player2.token}'s turn`;
+  }
   for (var i = 0; i < squares.length; i++) {
     squares[i].innerText = "";
     squares[i].classList.remove("disabled");
