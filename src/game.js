@@ -12,7 +12,7 @@ class Game {
     this.currentTurn = this.currentTurn === 1 ? 2 : 1;
   };
 
-  clickSquare(player, squareNum) {
+  updateClickedSquares(player, squareNum) {
     player.clicked.push(squareNum);
     this.combinedSquaresClicked.push(squareNum);
     // this.checkTotal(player);

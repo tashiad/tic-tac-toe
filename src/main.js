@@ -17,26 +17,25 @@ gameboard.addEventListener("click", identifySquare);
 function identifySquare(event) {
   if (event.target.classList.contains("td")) {
     event.target.classList.add("disabled");
-    showToken(event.target);
+    clickSquare(event.target);
   };
 };
 
-function showToken(clickedSquare) {
+//CHANGE NAMES
+function clickSquare(square) {
+  var idNum = square.id[square.id.length - 1];
   if (game.currentTurn === 1) {
-    var idNum = clickedSquare.id[clickedSquare.id.length - 1];
-    clickedSquare.innerText = `${game.player1.token}`;
+    square.innerText = `${game.player1.token}`;
     header.innerText = `It's ${game.player2.token}'s turn`;
-    game.clickSquare(game.player1, idNum);
+    game.updateClickedSquares(game.player1, idNum);
     changeGameState(game.player1);
-    loadWins();
   } else if (game.currentTurn === 2) {
-    var idNum = clickedSquare.id[clickedSquare.id.length - 1];
-    clickedSquare.innerText = `${game.player2.token}`;
+    square.innerText = `${game.player2.token}`;
     header.innerText = `It's ${game.player1.token}'s turn`;
-    game.clickSquare(game.player2, idNum);
+    game.updateClickedSquares(game.player2, idNum);
     changeGameState(game.player2);
-    loadWins();
   };
+  loadWins();
 };
 
 function changeGameState(player) {
