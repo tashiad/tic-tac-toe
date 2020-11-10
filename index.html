@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title>Colorado Tic Tac Toe</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./styles.css">
-</head>
-
-<body>
-  <section class="sidebar left">
-    <div>⛷</div>
-    <h2 id="skiier">0 wins</h2>
-  </section>
-  <section class="center">
-    <h1>It's ⛷'s turn</h1>
-    <table>
-      <tr>
-        <td class="td" id="square-1">‍</td>
-        <td class="td" id="square-2"></td>
-        <td class="td" id="square-3"></td>
-      </tr>
-      <tr>
-        <td class="td" id="square-4"></td>
-        <td class="td" id="square-5"></td>
-        <td class="td" id="square-6"></td>
-      </tr>
-      <tr>
-        <td class="td" id="square-7"></td>
-        <td class="td" id="square-8"></td>
-        <td class="td" id="square-9">‍</td>
-      </tr>
-    </table>
-  </section>
-  <section class="sidebar right">
-    <div>🚵‍♂️</div>
-    <h2 id="biker">0 wins</h2>
-  </section>
-  <script src="./src/player.js"></script>
-  <script src="./src/game.js"></script>
-  <script src="./src/main.js"></script>
-</body>
-
+  <head>
+    <meta charset="utf-8">
+    <title>Colorado Tic Tac Toe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+  </head>
+  <body>
+    <section class="sidebar">
+      <div class="token">⛷</div>
+      <h2 id="skiier">0 wins</h2>
+    </section>
+    <section class="center">
+      <h1 id="game-state">It's ⛷'s turn</h1>
+      <table class="gameboard">
+        <tr>
+          <td class="gameboard-square" id="square-1">‍</td>
+          <td class="gameboard-square" id="square-2"></td>
+          <td class="gameboard-square" id="square-3"></td>
+        </tr>
+        <tr>
+          <td class="gameboard-square" id="square-4"></td>
+          <td class="gameboard-square" id="square-5"></td>
+          <td class="gameboard-square" id="square-6"></td>
+        </tr>
+        <tr>
+          <td class="gameboard-square" id="square-7"></td>
+          <td class="gameboard-square" id="square-8"></td>
+          <td class="gameboard-square" id="square-9">‍</td>
+        </tr>
+      </table>
+    </section>
+    <section class="sidebar">
+      <div class="token">🚵‍♂️</div>
+      <h2 id="biker">0 wins</h2>
+    </section>
+    <script src="./src/player.js"></script>
+    <script src="./src/game.js"></script>
+    <script src="./src/main.js"></script>
+  </body>
 </html>

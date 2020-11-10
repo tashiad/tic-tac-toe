@@ -27,28 +27,28 @@ class Game {
   };
 
   checkForWinningCombo(player) {
-    if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
+    if ((player.clicked.includes('1')) && (player.clicked.includes('2')) && (player.clicked.includes('3'))) {
       this.executeWin(player);
       return;
-    } else if ((player.clicked.includes("1")) && (player.clicked.includes("4")) && (player.clicked.includes("7"))) {
+    } else if ((player.clicked.includes('1')) && (player.clicked.includes('4')) && (player.clicked.includes('7'))) {
       this.executeWin(player);
       return;
-    } else if ((player.clicked.includes("1")) && (player.clicked.includes("5")) && (player.clicked.includes("9"))) {
+    } else if ((player.clicked.includes('1')) && (player.clicked.includes('5')) && (player.clicked.includes('9'))) {
       this.executeWin(player);
       return;
-    } else if ((player.clicked.includes("2")) && (player.clicked.includes("5")) && (player.clicked.includes("8"))) {
+    } else if ((player.clicked.includes('2')) && (player.clicked.includes('5')) && (player.clicked.includes('8'))) {
       this.executeWin(player);
       return;
-    } else if ((player.clicked.includes("3")) && (player.clicked.includes("5")) && (player.clicked.includes("7"))) {
+    } else if ((player.clicked.includes('3')) && (player.clicked.includes('5')) && (player.clicked.includes('7'))) {
       this.executeWin(player);
       return;
-    } else if ((player.clicked.includes("3")) && (player.clicked.includes("6")) && (player.clicked.includes("9"))) {
+    } else if ((player.clicked.includes('3')) && (player.clicked.includes('6')) && (player.clicked.includes('9'))) {
       this.executeWin(player);
       return;
-    } else if ((player.clicked.includes("4")) && (player.clicked.includes("5")) && (player.clicked.includes("6"))) {
+    } else if ((player.clicked.includes('4')) && (player.clicked.includes('5')) && (player.clicked.includes('6'))) {
       this.executeWin(player);
       return;
-    } else if ((player.clicked.includes("7")) && (player.clicked.includes("8")) && (player.clicked.includes("9"))) {
+    } else if ((player.clicked.includes('7')) && (player.clicked.includes('8')) && (player.clicked.includes('9'))) {
       this.executeWin(player);
       return;
     } else if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
