@@ -23,7 +23,7 @@ class Game {
       this.checkForWinningCombo(player);
     } else {
       this.changeTurns();
-    }
+    };
   };
 
   checkForWinningCombo(player) {
