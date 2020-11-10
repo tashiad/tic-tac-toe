@@ -8,13 +8,8 @@ class Game {
     this.tie = false;
   };
 
-  changeTurns() { // invoke somewhere else? update property?
-    if (this.currentTurn === 1) {
-      this.currentTurn = 2;
-    } else if (this.currentTurn === 2) {
-      this.currentTurn = 1;
-    };
-    // this.currentTurn = this.currentTurn === 1 ? 2 : 1;
+  changeTurns() {
+    this.currentTurn = this.currentTurn === 1 ? 2 : 1;
   };
 
   updateClickedSquares(player, squareNum) {
