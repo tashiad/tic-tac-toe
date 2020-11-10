@@ -2,14 +2,14 @@
 My final solo project after 6 weeks at Turing: build a tic tac toe game from scratch! Choose to be a `skiier` or a `biker`. If you win, you get to have a great day in the mountains. If you lose, it means you got stuck on I-70 :cry:.
 
 # Goals
+- Use problem solving processes to break down large problems, solve things step by step, and trust yourself to not rely on an outside “answer” to a logical challenge
+- Understand the difference between the data model and how the data is displayed on the DOM
+- Iterate through/filter DOM elements using for loops
+
 Solidify and demonstrate understanding of:
   * DRY JavaScript
   * Local storage to persist data
   * Event delegation to handle similar event listeners  
-
-- Understand the difference between the data model and how the data is displayed on the DOM
-- Iterate through/filter DOM elements using for loops
-- Use problem solving processes to break down large problems, solve things step by step, and trust yourself to not rely on an outside “answer” to a logical challenge
 
 ## Contributors
 Myself, and the occasional pick-me-up from my lovely mentor, [@farmermel](https://github.com/farmermel).
@@ -32,15 +32,19 @@ Since one of the goals of this project relied on building a strong data model, I
 Before ever touching `main.js`, I tried to make the game fully playable without the DOM to force myself to think data-model first.
 
 ## Features
+
+### Start a New Game
 Upon opening `index.html`, the game starts out with an empty gameboard. Each player has 0 wins, and `skiier` goes first.
 ![Initial Screen](https://raw.githubusercontent.com/tashiad/tic-tac-toe/main/readme-images/initial-screen.png?token=AP6BPJU3R4WG4N6TKFFJSZ27VMHQO)
-
+  
+### How to Win
 In case you somehow don't know how to play tic tac toe by now, you can win by getting 3 in a row, 3 in a column, or 3 diagonally. When a player wins, their win count in the sidebar increases. This will persist on page refresh, so if you want to take a break, you can come back to the game without losing your precious win count.
 ![Wins](https://raw.githubusercontent.com/tashiad/tic-tac-toe/main/readme-images/win.gif?token=AP6BPJSS2NNBRKIFMG4E4HC7VMHRG)
 
 A game can also end with a tie.
 ![Draws](https://raw.githubusercontent.com/tashiad/tic-tac-toe/main/readme-images/tie.gif?token=AP6BPJS5M5TDTFPTSIQYLA27VMHSA)
 
+### How to Play Again
 When a game ends, the gameboard automatically refreshes after 3 seconds so you can play another game. The next game starts out with the player who lost going first.
 
 ## Wins
