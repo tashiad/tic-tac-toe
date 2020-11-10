@@ -12,54 +12,48 @@ class Game {
     this.currentTurn = this.currentTurn === 1 ? 2 : 1;
   };
 
-  clickSquare(player, squareNum) {
+  updateClickedSquares(player, squareNum) {
     player.clicked.push(squareNum);
     this.combinedSquaresClicked.push(squareNum);
-    // this.checkTotal(player);
-    this.checkForWinningCombo(player);
+    this.checkTotal(player);
   };
 
-  // checkTotal(player) { // where can i changeTurn?
-  //   if (this.combinedSquaresClicked.length >= 5) {
-  //     this.checkForWinningCombo(player);
-  //   } else if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
-  //     this.tie = true;
-  //   } else {
-  //     this.changeTurns();
-  //   }
-  // };
+  checkTotal(player) {
+    if (this.combinedSquaresClicked.length >= 5) {
+      this.checkForWinningCombo(player);
+    } else {
+      this.changeTurns();
+    };
+  };
 
   checkForWinningCombo(player) {
-    if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
-      this.tie = true; // double check that this is working properly
-    } else if (this.combinedSquaresClicked.length >= 5) {
-      if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
-        this.executeWin(player);
-        return;
-      } else if ((player.clicked.includes("1")) && (player.clicked.includes("4")) && (player.clicked.includes("7"))) {
-        this.executeWin(player);
-        return;
-      } else if ((player.clicked.includes("1")) && (player.clicked.includes("5")) && (player.clicked.includes("9"))) {
-        this.executeWin(player);
-        return;
-      } else if ((player.clicked.includes("2")) && (player.clicked.includes("5")) && (player.clicked.includes("8"))) {
-        this.executeWin(player);
-        return;
-      } else if ((player.clicked.includes("3")) && (player.clicked.includes("5")) && (player.clicked.includes("7"))) {
-        this.executeWin(player);
-        return;
-      } else if ((player.clicked.includes("3")) && (player.clicked.includes("6")) && (player.clicked.includes("9"))) {
-        this.executeWin(player);
-        return;
-      } else if ((player.clicked.includes("4")) && (player.clicked.includes("5")) && (player.clicked.includes("6"))) {
-        this.executeWin(player);
-        return;
-      } else if ((player.clicked.includes("7")) && (player.clicked.includes("8")) && (player.clicked.includes("9"))) {
-        this.executeWin(player);
-        return;
-      } else {
-        this.changeTurns();
-      };
+    if ((player.clicked.includes("1")) && (player.clicked.includes("2")) && (player.clicked.includes("3"))) {
+      this.executeWin(player);
+      return;
+    } else if ((player.clicked.includes("1")) && (player.clicked.includes("4")) && (player.clicked.includes("7"))) {
+      this.executeWin(player);
+      return;
+    } else if ((player.clicked.includes("1")) && (player.clicked.includes("5")) && (player.clicked.includes("9"))) {
+      this.executeWin(player);
+      return;
+    } else if ((player.clicked.includes("2")) && (player.clicked.includes("5")) && (player.clicked.includes("8"))) {
+      this.executeWin(player);
+      return;
+    } else if ((player.clicked.includes("3")) && (player.clicked.includes("5")) && (player.clicked.includes("7"))) {
+      this.executeWin(player);
+      return;
+    } else if ((player.clicked.includes("3")) && (player.clicked.includes("6")) && (player.clicked.includes("9"))) {
+      this.executeWin(player);
+      return;
+    } else if ((player.clicked.includes("4")) && (player.clicked.includes("5")) && (player.clicked.includes("6"))) {
+      this.executeWin(player);
+      return;
+    } else if ((player.clicked.includes("7")) && (player.clicked.includes("8")) && (player.clicked.includes("9"))) {
+      this.executeWin(player);
+      return;
+    } else if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
+      this.tie = true;
+      return;
     } else {
       this.changeTurns();
     };
@@ -69,12 +63,16 @@ class Game {
     this.winningCombo = true;
     player.isWinner = true;
     player.wins++;
+    if (player.id === 'one') {
+      this.currentTurn = 2;
+    } else if (player.id === 'two') {
+      this.currentTurn = 1;
+    };
     player.saveWinsToStorage(player);
   };
 
   reset() {
     this.combinedSquaresClicked = [];
-    this.currentTurn = 1;
     this.winningCombo = false;
     this.tie = false;
     this.player1.clicked = [];
