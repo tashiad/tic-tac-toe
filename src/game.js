@@ -73,7 +73,6 @@ class Game {
     } else if (player.id === 'two') {
       this.currentTurn = 1;
     };
-    console.log(game)
     player.saveWinsToStorage(player);
   };
 
