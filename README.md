@@ -23,6 +23,9 @@ Myself, and the occasional pick-me-up from my lovely mentor, [@farmermel](https:
 - Git
 - Atom
 
+## Instructions for Viewing
+Since this is currently a private repo, you'll need to clone it down and open `index.html` to play the game.
+
 ## Code Architecture
 Since one of the goals of this project relied on building a strong data model, I created the following:
 - A `player.js` file that contains a `Player` class and is the source of truth for everything happening to the 2 players
