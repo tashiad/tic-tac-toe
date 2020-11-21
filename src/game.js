@@ -6,58 +6,63 @@ class Game {
     this.currentTurn = 1;
     this.winningCombo = false;
     this.tie = false;
-  };
+  }
 
   changeTurns() {
     this.currentTurn = this.currentTurn === 1 ? 2 : 1;
-  };
+  }
 
   updateClickedSquares(player, squareNum) {
     player.clicked.push(squareNum);
     this.combinedSquaresClicked.push(squareNum);
     this.checkTotal(player);
-  };
+  }
 
   checkTotal(player) {
     if (this.combinedSquaresClicked.length >= 5) {
-      this.checkForWinningCombo(player);
+      this.checkGameWinner(player);
     } else {
       this.changeTurns();
-    };
-  };
+    }
+  }
 
-  checkForWinningCombo(player) {
+  checkRows(player) {
     if ((player.clicked.includes('1')) && (player.clicked.includes('2')) && (player.clicked.includes('3'))) {
-      this.executeWin(player);
-      return;
-    } else if ((player.clicked.includes('1')) && (player.clicked.includes('4')) && (player.clicked.includes('7'))) {
-      this.executeWin(player);
-      return;
-    } else if ((player.clicked.includes('1')) && (player.clicked.includes('5')) && (player.clicked.includes('9'))) {
-      this.executeWin(player);
-      return;
-    } else if ((player.clicked.includes('2')) && (player.clicked.includes('5')) && (player.clicked.includes('8'))) {
-      this.executeWin(player);
-      return;
-    } else if ((player.clicked.includes('3')) && (player.clicked.includes('5')) && (player.clicked.includes('7'))) {
-      this.executeWin(player);
-      return;
-    } else if ((player.clicked.includes('3')) && (player.clicked.includes('6')) && (player.clicked.includes('9'))) {
-      this.executeWin(player);
-      return;
+      return true;
     } else if ((player.clicked.includes('4')) && (player.clicked.includes('5')) && (player.clicked.includes('6'))) {
-      this.executeWin(player);
-      return;
+      return true;
     } else if ((player.clicked.includes('7')) && (player.clicked.includes('8')) && (player.clicked.includes('9'))) {
+      return true;
+    }
+  }
+
+  checkCols(player) {
+    if ((player.clicked.includes('1')) && (player.clicked.includes('4')) && (player.clicked.includes('7'))) {
+      return true;
+    } else if ((player.clicked.includes('2')) && (player.clicked.includes('5')) && (player.clicked.includes('8'))) {
+      return true;
+    } else if ((player.clicked.includes('3')) && (player.clicked.includes('6')) && (player.clicked.includes('9'))) {
+      return true;
+    }
+  }
+
+  checkDiags(player) {
+    if ((player.clicked.includes('1')) && (player.clicked.includes('5')) && (player.clicked.includes('9'))) {
+      return true;
+    } else if ((player.clicked.includes('3')) && (player.clicked.includes('5')) && (player.clicked.includes('7'))) {
+      return true;
+    }
+  }
+
+  checkGameWinner(player) {
+    if (this.checkRows(player) || this.checkCols(player) || this.checkDiags(player)) {
       this.executeWin(player);
-      return;
     } else if ((this.combinedSquaresClicked.length === 9) && (this.winningCombo === false)) {
       this.tie = true;
-      return;
     } else {
       this.changeTurns();
-    };
-  };
+    }
+  }
 
   executeWin(player) {
     this.winningCombo = true;
@@ -67,9 +72,9 @@ class Game {
       this.currentTurn = 2;
     } else if (player.id === 'two') {
       this.currentTurn = 1;
-    };
+    }
     player.saveWinsToStorage(player);
-  };
+  }
 
   reset() {
     this.combinedSquaresClicked = [];
@@ -79,6 +84,6 @@ class Game {
     this.player2.clicked = [];
     this.player1.isWinner = false;
     this.player2.isWinner = false;
-  };
+  }
 
-};
+}
