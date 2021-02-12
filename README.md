@@ -1,5 +1,5 @@
 # Colorado Tic Tac Toe
-My final solo project after 6 weeks at Turing: build a tic tac toe game from scratch! Choose to be a `skiier` or a `biker`. If you win, you get to have a great day in the mountains. If you lose, it means you got stuck on I-70 :cry:.
+My final solo project after 6 weeks at Turing: build a tic tac toe game from scratch! Choose to be a `skier` or a `biker`. If you win, you get to have a great day in the mountains. If you lose, it means you got stuck on I-70 :cry:.
 
 # Goals
 - Use problem solving processes to break down large problems, solve things step by step, and trust yourself to not rely on an outside “answer” to a logical challenge
@@ -37,7 +37,7 @@ Before ever touching `main.js`, I tried to make the game fully playable without 
 ## Features
 
 ### Start a New Game
-Upon opening `index.html`, the game starts out with an empty gameboard. Each player has 0 wins, and `skiier` goes first.
+Upon opening `index.html`, the game starts out with an empty gameboard. Each player has 0 wins, and `skier` goes first.
 ![Initial Screen](readme-images/initial-screen.png)
 
 ### How to Win
